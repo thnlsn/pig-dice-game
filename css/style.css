@@ -15,7 +15,20 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-family: "Judson", serif;
   color: #0b1731;
-  background-color: #dba786; }
+  background: linear-gradient(to right, #65d7db, #dba786, #99db91);
+  background-size: 200%;
+  background-position: 0% 0%;
+  transition: background-position 0.5s; }
+
+.active-player--0 {
+  background-position: 0% 0%; }
+
+.active-player--1 {
+  background-position: 100% 0%; }
+
+.player__name {
+  font-family: 'Quando', serif;
+  font-size: 2.4rem; }

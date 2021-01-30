@@ -13,8 +13,27 @@ html {
 
 body {
   // Set the default font styles, colors, etc.
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-family: $font-text;
   color: $color-black;
-  background-color: $color-primary-light;
+
+  background: linear-gradient(
+    to right,
+    $color-player-one,
+    $color-primary-light,
+    $color-player-two
+  );
+  background-size: 200%;
+
+  background-position: 0% 0%;
+  transition: background-position 0.5s;
+}
+
+.active-player {
+  &--0 {
+    background-position: 0% 0%;
+  }
+  &--1 {
+    background-position: 100% 0%;
+  }
 }
