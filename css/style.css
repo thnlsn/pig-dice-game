@@ -1,3 +1,4 @@
+/* Style imports (Every partial imported into here will be available app-wide) */
 :root {
   --color-white: #fff;
   --color-black: #000; }
@@ -16,5 +17,5 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Judson", serif;
-  color: #000;
+  color: #0b1731;
   background-color: #dba786; }

@@ -1,4 +1,19 @@
-@import 'variables';
-@import 'base';
-@import 'layout';
-@import 'components';
+/* Style imports (Every partial imported into here will be available app-wide) */
+
+// Abstracts
+// @import './mixins';
+@import './variables';
+
+// Base
+@import './base';
+@import './typography';
+// @import './utilities';
+
+// Components
+@import './components';
+
+// Layout
+@import './layout';
+
+// Pages
+// @import './pages/home';
