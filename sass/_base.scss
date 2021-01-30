@@ -14,5 +14,7 @@ html {
 body {
   // Set the default font styles, colors, etc.
   font-size: 1.6rem;
+  font-family: $font-text;
   color: $color-black;
+  background-color: $color-primary-light;
 }
