@@ -72,12 +72,15 @@ main {
   position: relative; }
 
 .player {
-  padding: 5rem 7.5rem;
   text-align: center; }
   .player__score {
     margin-top: 1rem; }
   .player--active {
     background-color: rgba(238, 230, 210, 0.8); }
+  .player--0 {
+    padding: 5rem 14rem 5rem 7.5rem; }
+  .player--1 {
+    padding: 5rem 7.5rem 5rem 14rem; }
 
 .current {
   display: flex;
@@ -105,7 +108,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%); }
   .controls__dice {
-    margin: 5rem 0; }
+    margin: 3rem 0; }
   .controls__hold {
     margin-top: 1rem; }
 
