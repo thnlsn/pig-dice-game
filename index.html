@@ -25,6 +25,8 @@
     />
 
     <title>Pig Dice Game</title>
+    <script src="./dice.js" async></script>
+    <script src="./script.js" async></script>
   </head>
   <body class="active-player active-player--0">
     <main>
@@ -43,6 +45,18 @@
           <p class="current__label">Current</p>
           <p class="current__score" id="current--1">0</p>
         </div>
+      </section>
+
+      <section class="controls">
+        <button class="btn controls__new-game">New Game</button>
+        <svg
+          viewBox="0 0 150 150"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="svg"
+        ></svg>
+        <button class="btn controls__roll-dice">Roll Die</button>
+        <button class="btn controls__hold">Hold</button>
       </section>
     </main>
   </body>

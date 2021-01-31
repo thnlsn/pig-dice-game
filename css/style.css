@@ -3,6 +3,13 @@
   --color-white: #fff;
   --color-black: #000; }
 
+.hidden {
+  visibility: hidden; }
+
+.svg {
+  height: 14rem;
+  width: 14rem; }
+
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
@@ -43,6 +50,11 @@ body {
 .current__score {
   font-size: 4.8rem; }
 
+.die {
+  fill: #0b1731; }
+  .die__dot {
+    fill: #eee6d2; }
+
 body {
   height: 100vh;
   display: flex;
@@ -56,7 +68,8 @@ main {
   justify-items: center;
   background-color: rgba(238, 230, 210, 0.5);
   border: 1rem solid #eee6d2;
-  border-radius: 5px; }
+  border-radius: 20px;
+  position: relative; }
 
 .player {
   padding: 5rem 7.5rem;
@@ -82,3 +95,23 @@ main {
     background-color: rgba(153, 219, 145, 0.8); }
   .current__label {
     margin-bottom: 1rem; }
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .controls__dice {
+    margin: 5rem 0; }
+  .controls__hold {
+    margin-top: 1rem; }
+
+.btn {
+  border: none;
+  outline: none;
+  background-color: rgba(238, 230, 210, 0.8);
+  padding: 1rem 2rem;
+  border-radius: 15px; }

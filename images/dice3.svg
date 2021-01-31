@@ -1,0 +1,8 @@
+<svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+<g id="dice-3">
+<rect class="die" width="150" height="150" rx="20"/>
+<circle class="die__dot" cx="50.5" cy="50.5" r="12.5"/>
+<circle class="die__dot" cx="100.5" cy="100.5" r="12.5"/>
+<circle class="die__dot" cx="75.5" cy="75.5" r="12.5"/>
+</g>
+</svg>
