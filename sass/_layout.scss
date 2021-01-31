@@ -89,7 +89,18 @@ main {
 .btn {
   border: none;
   outline: none;
-  background-color: rgba($color: $color-white, $alpha: 0.8);
   padding: 1rem 2rem;
   border-radius: 15px;
+
+  transition: all 0.1s;
+  background-color: rgba($color: $color-white, $alpha: 0.8);
+
+  &:hover {
+    background-color: rgba($color: $color-white, $alpha: 1);
+    transform: translateY(-0.2rem) scale(1.05);
+  }
+  &:active {
+    background-color: rgba($color: $color-white, $alpha: 1);
+    transform: translateY(-0rem) scale(1.01);
+  }
 }

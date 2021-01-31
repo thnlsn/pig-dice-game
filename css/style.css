@@ -115,6 +115,13 @@ main {
 .btn {
   border: none;
   outline: none;
-  background-color: rgba(238, 230, 210, 0.8);
   padding: 1rem 2rem;
-  border-radius: 15px; }
+  border-radius: 15px;
+  transition: all 0.1s;
+  background-color: rgba(238, 230, 210, 0.8); }
+  .btn:hover {
+    background-color: #eee6d2;
+    transform: translateY(-0.2rem) scale(1.05); }
+  .btn:active {
+    background-color: #eee6d2;
+    transform: translateY(0rem) scale(1.01); }
