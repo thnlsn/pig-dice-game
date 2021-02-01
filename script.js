@@ -25,6 +25,7 @@ score1El.textContent = 0; // Initialize scores as 0
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
@@ -48,25 +49,27 @@ const switchPlayers = () => {
 };
 
 const roll = () => {
-  // Generate random number
-  const result = Math.trunc(Math.random() * 6); // Random # 0-5
-  dieEl.innerHTML = dice[result]; // Use that number to search array and set the SVG
+  if (playing) {
+    // Generate random number
+    const result = Math.trunc(Math.random() * 6); // Random # 0-5
+    dieEl.innerHTML = dice[result]; // Use that number to search array and set the SVG
 
-  // Check if die is 0 (1 on the SVG)
-  if (result === 0) {
-    // Set currentScore to 0
-    currentScore = 0;
-    document.getElementById(
-      `current--${activePlayer}`
-    ).textContent = currentScore;
-    // Switch active player
-    switchPlayers();
-  } else {
-    // Add roll to currently active players score
-    currentScore += result + 1;
-    document.getElementById(
-      `current--${activePlayer}`
-    ).textContent = currentScore;
+    // Check if die is 0 (1 on the SVG) but only if the game is not over
+    if (result === 0) {
+      // Set currentScore to 0
+      currentScore = 0;
+      document.getElementById(
+        `current--${activePlayer}`
+      ).textContent = currentScore;
+      // Switch active player
+      switchPlayers();
+    } else {
+      // Add roll to currently active players score
+      currentScore += result + 1;
+      document.getElementById(
+        `current--${activePlayer}`
+      ).textContent = currentScore;
+    }
   }
 };
 
@@ -85,6 +88,8 @@ const hold = () => {
 
   if (scores[activePlayer] >= 10) {
     // activePlayer wins game!
+    playing = false; // End the game so the buttons don't work anymore
+    dieEl.innerHTML = null;
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.remove('player--active');
@@ -98,6 +103,7 @@ const hold = () => {
 };
 
 const reset = () => {
+  playing = true;
   dieEl.innerHTML = null;
   scores[0] = 0;
   scores[1] = 0;
