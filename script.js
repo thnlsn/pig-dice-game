@@ -14,18 +14,27 @@ const background = document.querySelector('.active-player'); // Background
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
-// Starting conditions
-score0El.textContent = 0; // Initialize scores as 0
-score1El.textContent = 0; // Initialize scores as 0
+// Initialization
+let scores, currentScore, activePlayer, playing;
 
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-// Persisting state
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+const init = () => {
+  // Persisting state
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = scores[0];
+  score1El.textContent = scores[1];
+  current0El.textContent = currentScore;
+  current1El.textContent = currentScore;
+
+  document.querySelector('.player--0').classList.remove('player--winner');
+  document.querySelector('.player--1').classList.remove('player--winner');
+  document.querySelector('.player--0').classList.add('player--active');
+  document.querySelector('.player--1').classList.remove('player--active');
+};
+init();
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
@@ -109,10 +118,7 @@ const reset = () => {
   scores[1] = 0;
   currentScore = 0;
 
-  score0El.textContent = scores[0];
-  score1El.textContent = scores[1];
-  current0El.textContent = currentScore;
-  current1El.textContent = currentScore;
+  init();
 
   // If it is the second players turn when reset, switch players
   if (activePlayer !== 0) {
