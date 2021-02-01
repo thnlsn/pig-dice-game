@@ -95,7 +95,7 @@ const hold = () => {
     `current--${activePlayer}`
   ).textContent = currentScore;
 
-  if (scores[activePlayer] >= 10) {
+  if (scores[activePlayer] >= 100) {
     // activePlayer wins game!
     playing = false; // End the game so the buttons don't work anymore
     dieEl.innerHTML = null;
