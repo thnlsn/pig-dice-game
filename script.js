@@ -1,5 +1,8 @@
 'use strict';
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // Selectors for DOM elements
 const score0El = document.getElementById('score--0'); // DOM element for score 0
 const score1El = document.getElementById('score--1'); // DOM element for score 1
@@ -8,24 +11,42 @@ const current0El = document.getElementById('current--0'); // DOM element for cur
 const current1El = document.getElementById('current--1'); // DOM element for current 1
 const background = document.querySelector('.active-player'); // Background
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // Starting conditions
 score0El.textContent = 0; // Initialize scores as 0
 score1El.textContent = 0; // Initialize scores as 0
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // Persisting state
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // Functions for buttons
-
 const switchPlayers = () => {
-  // Remove the current background altering class
+  // Remove the current background class and the white background from active player
   background.classList.remove(`active-player--${activePlayer}`);
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--active');
+
   // Switch active player
   activePlayer = activePlayer === 0 ? 1 : 0;
-  // Add the new background altering class
+
+  // Add the new background class and the white background to new active player
   background.classList.add(`active-player--${activePlayer}`);
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.add('player--active');
+
+  // Remove the white background from old activePlayer and add it to new activePlayer
 };
 
 const roll = () => {
@@ -51,10 +72,40 @@ const roll = () => {
   }
 };
 
-const reset = () => {
-  dieEl.innerHTML = null;
+const hold = () => {
+  // Set the score of the current player to whatever currentScore is
+  scores[activePlayer] += currentScore;
+  score0El.textContent = scores[0];
+  score1El.textContent = scores[1];
+  // Set currentScore to 0
+  currentScore = 0;
+  document.getElementById(
+    `current--${activePlayer}`
+  ).textContent = currentScore;
+  // Switch players
+  switchPlayers();
 };
 
+const reset = () => {
+  dieEl.innerHTML = null;
+  scores[0] = 0;
+  scores[1] = 0;
+  currentScore = 0;
+
+  score0El.textContent = scores[0];
+  score1El.textContent = scores[1];
+  current0El.textContent = currentScore;
+  current1El.textContent = currentScore;
+
+  // If it is the second players turn when reset, switch players
+  if (activePlayer !== 0) {
+    switchPlayers();
+  }
+};
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // Event listeners for buttons
 const newGameBtn = document
   .querySelector('.controls__new-game')
@@ -62,6 +113,6 @@ const newGameBtn = document
 const rollBtn = document
   .querySelector('.controls__roll-dice')
   .addEventListener('click', roll);
-/* const holdBtn = document
+const holdBtn = document
   .querySelector('.controls__hold')
-  .addEventListener('click', hold); */
+  .addEventListener('click', hold);
