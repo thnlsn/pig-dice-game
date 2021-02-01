@@ -13,6 +13,15 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media only screen and (max-width: 62.5em) {
+    html {
+      font-size: 56.5%; } }
+  @media only screen and (max-width: 50em) {
+    html {
+      font-size: 52.5%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 49.5%; } }
 
 *,
 *::before,
@@ -63,9 +72,13 @@ body {
 .player {
   text-align: center;
   transition: background-color 0.25s;
-  background-color: rgba(238, 230, 210, 0.25); }
+  background-color: rgba(238, 230, 210, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   .player__score {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    line-height: 100%; }
   .player--active {
     background-color: rgba(238, 230, 210, 0.75); }
   .player--winner {
@@ -76,18 +89,39 @@ body {
       color: #0b1731; }
   .player--0 {
     padding: 5rem 14rem 5rem 7.5rem; }
+    @media only screen and (max-width: 50em) {
+      .player--0 {
+        padding: 5rem 18.5rem 14rem 18.5rem;
+        justify-content: flex-end; } }
+    @media only screen and (max-width: 37.5em) {
+      .player--0 {
+        padding: 2rem 8.5rem 14rem 8.5rem; } }
   .player--1 {
     padding: 5rem 7.5rem 5rem 14rem; }
+    @media only screen and (max-width: 50em) {
+      .player--1 {
+        padding: 14rem 18.5rem 5rem 18.5rem;
+        justify-content: flex-start; } }
+    @media only screen and (max-width: 37.5em) {
+      .player--1 {
+        padding: 14rem 8.5rem 2rem 8.5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .player {
+      width: 100%;
+      height: 100%; } }
 
 .current {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem 5rem;
+  padding: 2rem 2.5rem;
   border-radius: 10px;
   margin-top: 6rem;
   color: #eee6d2; }
+  @media only screen and (max-width: 50em) {
+    .current {
+      margin-top: 1rem; } }
   .current--0 {
     background-color: #0b1731; }
   .current--1 {
@@ -124,6 +158,15 @@ main {
   overflow: hidden;
   border: 1rem solid #0b1731;
   border-radius: 20px; }
+  @media only screen and (max-width: 50em) {
+    main {
+      grid-template-columns: 1fr; } }
+  @media only screen and (max-width: 37.5em) {
+    main {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0; } }
 
 .controls {
   display: flex;
@@ -133,7 +176,34 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+  @media only screen and (max-width: 50em) {
+    .controls {
+      display: grid;
+      grid-template-columns: [full-start new-start] 1fr [new-end dice-start] 2fr [dice-end roll-start] minmax(max-content, 1fr) [roll-end];
+      grid-template-rows: min-content min-content;
+      width: 100%;
+      padding: 0 2rem;
+      row-gap: 1rem;
+      justify-items: center; } }
+  @media only screen and (max-width: 50em) {
+    .controls__new-game {
+      grid-column: new-start / new-end;
+      grid-row: 1 / -1; } }
   .controls__dice {
     margin: 3rem 0; }
+    @media only screen and (max-width: 50em) {
+      .controls__dice {
+        margin: 0 3rem;
+        grid-column: dice-start / dice-end;
+        grid-row: 1 / -1; } }
+  .controls__roll-dice {
+    align-self: end;
+    justify-self: end; }
   .controls__hold {
     margin-top: 1rem; }
+    @media only screen and (max-width: 50em) {
+      .controls__hold {
+        margin-left: 1rem;
+        grid-column: roll-start / roll-end;
+        align-self: start;
+        justify-self: end; } }

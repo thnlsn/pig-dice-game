@@ -16,6 +16,16 @@ main {
   overflow: hidden; // For the background color of the inner player components
   border: 1rem solid $color-black;
   border-radius: 20px;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+  }
 }
 
 .controls {
@@ -28,14 +38,44 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media only screen and (max-width: $bp-medium) {
+    display: grid;
+    grid-template-columns: [full-start new-start] 1fr [new-end dice-start] 2fr [dice-end roll-start] minmax(
+        max-content,
+        1fr
+      ) [roll-end];
+    grid-template-rows: min-content min-content;
+    width: 100%;
+    padding: 0 2rem;
+    row-gap: 1rem;
+    justify-items: center;
+  }
+
   &__new-game {
+    @media only screen and (max-width: $bp-medium) {
+      grid-column: new-start / new-end;
+      grid-row: 1 / -1;
+    }
   }
   &__dice {
     margin: 3rem 0;
+    @media only screen and (max-width: $bp-medium) {
+      margin: 0 3rem;
+      grid-column: dice-start / dice-end;
+      grid-row: 1 / -1;
+    }
   }
   &__roll-dice {
+    align-self: end;
+    justify-self: end;
   }
   &__hold {
     margin-top: 1rem;
+    @media only screen and (max-width: $bp-medium) {
+      margin-left: 1rem;
+      grid-column: roll-start / roll-end;
+      align-self: start;
+      justify-self: end;
+    }
   }
 }
