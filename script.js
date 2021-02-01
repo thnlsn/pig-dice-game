@@ -35,7 +35,7 @@ const switchPlayers = () => {
   background.classList.remove(`active-player--${activePlayer}`);
   document
     .querySelector(`.player--${activePlayer}`)
-    .classList.remove('player--active');
+    .classList.toggle('player--active');
 
   // Switch active player
   activePlayer = activePlayer === 0 ? 1 : 0;
@@ -44,9 +44,7 @@ const switchPlayers = () => {
   background.classList.add(`active-player--${activePlayer}`);
   document
     .querySelector(`.player--${activePlayer}`)
-    .classList.add('player--active');
-
-  // Remove the white background from old activePlayer and add it to new activePlayer
+    .classList.toggle('player--active');
 };
 
 const roll = () => {
@@ -75,15 +73,28 @@ const roll = () => {
 const hold = () => {
   // Set the score of the current player to whatever currentScore is
   scores[activePlayer] += currentScore;
+
   score0El.textContent = scores[0];
   score1El.textContent = scores[1];
+
   // Set currentScore to 0
   currentScore = 0;
   document.getElementById(
     `current--${activePlayer}`
   ).textContent = currentScore;
-  // Switch players
-  switchPlayers();
+
+  if (scores[activePlayer] >= 10) {
+    // activePlayer wins game!
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.remove('player--active');
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+  } else {
+    // Switch players
+    switchPlayers();
+  }
 };
 
 const reset = () => {

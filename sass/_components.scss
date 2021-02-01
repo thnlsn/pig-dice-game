@@ -5,3 +5,79 @@
     fill: $color-white;
   }
 }
+
+.player {
+  text-align: center;
+  transition: background-color 0.25s;
+  background-color: rgba($color: $color-white, $alpha: 0.25);
+
+  &__name {
+  }
+
+  &__score {
+    margin-top: 1rem;
+  }
+
+  &--active {
+    background-color: rgba($color: $color-white, $alpha: 0.75);
+  }
+
+  &--winner {
+    background-color: rgba($color: $color-black, $alpha: 0.9);
+    color: $color-white;
+
+    .current {
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+
+  &--0 {
+    padding: 5rem $die-size-large 5rem 7.5rem;
+  }
+  &--1 {
+    padding: 5rem 7.5rem 5rem $die-size-large;
+  }
+}
+
+.current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 5rem;
+  border-radius: 10px;
+
+  margin-top: 6rem;
+  color: $color-white;
+
+  &--0 {
+    background-color: $color-black;
+  }
+  &--1 {
+    background-color: $color-black;
+  }
+
+  &__label {
+    margin-bottom: 1rem;
+  }
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+
+  transition: all 0.1s;
+  background-color: rgba($color: $color-black, $alpha: 0.95);
+
+  &:hover {
+    background-color: rgba($color: $color-black, $alpha: 1);
+    transform: translateY(-0.2rem) scale(1.025);
+  }
+  &:active {
+    background-color: rgba($color: $color-black, $alpha: 1);
+    transform: translateY(-0rem) scale(1.005);
+  }
+}

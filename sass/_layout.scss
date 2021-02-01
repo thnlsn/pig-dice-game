@@ -11,57 +11,11 @@ main {
   align-items: center;
   justify-items: center;
 
-  background-color: rgba($color: $color-white, $alpha: 0.5);
-  border: 1rem solid $color-white;
-  border-radius: 20px;
-
   position: relative; // For the controls
-}
 
-.player {
-  text-align: center;
-
-  &__name {
-  }
-
-  &__score {
-    margin-top: 1rem;
-  }
-
-  &--active {
-    background-color: rgba($color: $color-white, $alpha: 0.8);
-  }
-
-  &--0 {
-    padding: 5rem $die-size-large 5rem 7.5rem;
-  }
-  &--1 {
-    padding: 5rem 7.5rem 5rem $die-size-large;
-  }
-}
-
-.current {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 5rem;
-  border-radius: 5px;
-
-  margin-top: 6rem;
-
-  &--0 {
-    border: 1rem solid $color-player-one;
-    background-color: rgba($color: $color-player-one, $alpha: 0.8);
-  }
-  &--1 {
-    border: 1rem solid $color-player-two;
-    background-color: rgba($color: $color-player-two, $alpha: 0.8);
-  }
-
-  &__label {
-    margin-bottom: 1rem;
-  }
+  overflow: hidden; // For the background color of the inner player components
+  border: 1rem solid $color-black;
+  border-radius: 20px;
 }
 
 .controls {
@@ -83,24 +37,5 @@ main {
   }
   &__hold {
     margin-top: 1rem;
-  }
-}
-
-.btn {
-  border: none;
-  outline: none;
-  padding: 1rem 2rem;
-  border-radius: 15px;
-
-  transition: all 0.1s;
-  background-color: rgba($color: $color-white, $alpha: 0.8);
-
-  &:hover {
-    background-color: rgba($color: $color-white, $alpha: 1);
-    transform: translateY(-0.2rem) scale(1.05);
-  }
-  &:active {
-    background-color: rgba($color: $color-white, $alpha: 1);
-    transform: translateY(-0rem) scale(1.01);
   }
 }
