@@ -40,10 +40,12 @@ main {
 
   @media only screen and (max-width: $bp-medium) {
     display: grid;
-    grid-template-columns: [full-start new-start] 1fr [new-end dice-start] 2fr [dice-end roll-start] minmax(
+    grid-template-columns:
+      [full-start new-start] 1fr [new-end dice-start] 2fr [dice-end roll-start] minmax(
         max-content,
         1fr
-      ) [roll-end];
+      )
+      [roll-end];
     grid-template-rows: min-content min-content;
     width: 100%;
     padding: 0 2rem;
@@ -66,8 +68,10 @@ main {
     }
   }
   &__roll-dice {
-    align-self: end;
-    justify-self: end;
+    @media only screen and (max-width: $bp-medium) {
+      align-self: end;
+      justify-self: end;
+    }
   }
   &__hold {
     margin-top: 1rem;

@@ -48,6 +48,17 @@ body {
 
   background-position: 0% 0%;
   transition: background-position 0.5s;
+
+  @media only screen and (max-width: $bp-medium) {
+    background: linear-gradient(
+      to bottom,
+      $color-player-one,
+      $color-primary-light,
+      $color-player-two
+    );
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+  }
 }
 
 .active-player {
@@ -56,5 +67,8 @@ body {
   }
   &--1 {
     background-position: 100% 0%;
+    @media only screen and (max-width: $bp-medium) {
+      background-position: 0% 100%;
+    }
   }
 }

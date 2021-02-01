@@ -38,12 +38,20 @@ body {
   background-size: 200%;
   background-position: 0% 0%;
   transition: background-position 0.5s; }
+  @media only screen and (max-width: 50em) {
+    body {
+      background: linear-gradient(to bottom, #65d7db, #dba786, #99db91);
+      background-size: 100% 200%;
+      background-position: 0% 0%; } }
 
 .active-player--0 {
   background-position: 0% 0%; }
 
 .active-player--1 {
   background-position: 100% 0%; }
+  @media only screen and (max-width: 50em) {
+    .active-player--1 {
+      background-position: 0% 100%; } }
 
 .player__name {
   font-family: 'Quando', serif;
@@ -196,9 +204,10 @@ main {
         margin: 0 3rem;
         grid-column: dice-start / dice-end;
         grid-row: 1 / -1; } }
-  .controls__roll-dice {
-    align-self: end;
-    justify-self: end; }
+  @media only screen and (max-width: 50em) {
+    .controls__roll-dice {
+      align-self: end;
+      justify-self: end; } }
   .controls__hold {
     margin-top: 1rem; }
     @media only screen and (max-width: 50em) {
