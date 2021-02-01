@@ -6,6 +6,7 @@ const score1El = document.getElementById('score--1'); // DOM element for score 1
 const dieEl = document.querySelector('.svg'); // DOM element for die SVG (not path)
 const current0El = document.getElementById('current--0'); // DOM element for current 0
 const current1El = document.getElementById('current--1'); // DOM element for current 1
+const background = document.querySelector('.active-player'); // Background
 
 // Starting conditions
 score0El.textContent = 0; // Initialize scores as 0
@@ -17,7 +18,17 @@ let currentScore = 0;
 let activePlayer = 0;
 
 // Functions for buttons
-const roll = (active) => {
+
+const switchPlayers = () => {
+  // Remove the current background altering class
+  background.classList.remove(`active-player--${activePlayer}`);
+  // Switch active player
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  // Add the new background altering class
+  background.classList.add(`active-player--${activePlayer}`);
+};
+
+const roll = () => {
   // Generate random number
   const result = Math.trunc(Math.random() * 6); // Random # 0-5
   dieEl.innerHTML = dice[result]; // Use that number to search array and set the SVG
@@ -26,11 +37,17 @@ const roll = (active) => {
   if (result === 0) {
     // Set currentScore to 0
     currentScore = 0;
+    document.getElementById(
+      `current--${activePlayer}`
+    ).textContent = currentScore;
     // Switch active player
+    switchPlayers();
   } else {
-    // Add roll to current
+    // Add roll to currently active players score
     currentScore += result + 1;
-    current0El.textContent = currentScore;
+    document.getElementById(
+      `current--${activePlayer}`
+    ).textContent = currentScore;
   }
 };
 
